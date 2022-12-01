@@ -1,19 +1,26 @@
-var canvas, backgroundImage;
+var canvas;
+var backgroundImage;
+var bgImg;
+var database;
+var form, player;
+var playerCount;
 
-var questions;
-
-var question, contestant, quiz;
-
-
-function setup(){
-  canvas = createCanvas(850,400);
-  database = firebase.database();
-  quiz = new Quiz();
-  quiz.start();
+function preload() {
+  backgroundImage = loadImage("./assets/planodefundo.png");
 }
 
+function setup() {
+  canvas = createCanvas(windowWidth, windowHeight);
+  database = firebase.database();
+  game = new Game();
+  game.getState()
+  game.start();
+}
 
-function draw(){
-  background("pink");
+function draw() {
+  background(backgroundImage);
+}
 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
